@@ -213,5 +213,6 @@ The main reasons for this decision are:
 5. **Development speed:** GORM simplifies common database operations and reduces repetitive code.
 6. **Deployment:** PostgreSQL can easily be deployed using Docker and Docker Compose.
 7. **Maintainability:** The combination provides a structured way to manage application data as the project evolves.
+8. **Security:** PostgreSQL provides built-in security features such as role-based access control, privileges and encrypted connections through TLS. It also supports secure authentication and access restrictions, helping protect sensitive user and workflow data.
 
 Although sqlc and pgx offer more direct control over SQL queries, GORM is considered a suitable choice for the project because it simplifies development while providing the necessary database features.

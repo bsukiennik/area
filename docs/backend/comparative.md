@@ -105,5 +105,6 @@ The main reasons for this decision are:
 4. **Deployment:** The compilation process produces standalone binaries, simplifying Docker deployment.
 5. **Maintainability:** Static typing and a relatively simple language make it easier to maintain a structured backend.
 6. **Project suitability:** Go provides the necessary features without introducing the complexity of a larger framework.
+7. **Security:** Go provides built-in cryptographic and TLS support, alongside libraries for authentication, authorization and input validation. These tools make it possible to implement the security requirements of the project while keeping the backend relatively simple.
 
 Although Node.js and Python offer larger ecosystems for certain integrations and rapid prototyping, Go provides a better balance between performance, concurrency, deployment simplicity and maintainability for this project.
