@@ -2,6 +2,12 @@
 
 ## Coding conventions
 
+### Branches
+
+Branches should be named ```"feature context"/"feature itself"```.
+
+For example a branch for some arhcitecture documentation should be named: ```docs/architecture```.
+
 ### Commits
 
 Each commit needs to follow our commit convention:
