@@ -1,16 +1,66 @@
 import { useCallback, useState } from 'react';
-import { ReactFlow, Background, Controls, addEdge, Position, MarkerType } from '@xyflow/react';
+import {
+  ReactFlow,
+  Background,
+  Controls,
+  Handle,
+  Position,
+  MarkerType,
+  addEdge,
+  type Connection,
+  type Edge,
+  type Node,
+} from '@xyflow/react';
 import '@xyflow/react/style.css';
 
-const initialNodes = [
-  { id: 'n1', position: { x: 0, y: 0 }, data: { label: 'Node 1' }, targetPosition: Position.Left, sourcePosition: Position.Right },
-  { id: 'n2', position: { x: 0, y: 100 }, data: { label: 'Node 2' }, targetPosition: Position.Left, sourcePosition: Position.Right },
-];
-const initialEdges = [{ id: 'n1-n2', source: 'n1', target: 'n2', deletable: true, markerEnd: { type: MarkerType.ArrowClosed } }];
+type NodeType = 'entry' | 'condition' | 'final';
+type WorkflowNode = Node<{ label: string }, NodeType>;
+
+const nodeStyle = {
+  padding: 10,
+  border: '1px solid #777',
+  borderRadius: 4,
+  background: '#fff',
+};
+
+function EntryNode() {
+  return (
+    <div style={nodeStyle}>
+      Entry
+      <Handle type="source" position={Position.Right} id="out" />
+    </div>
+  );
+}
+
+function ConditionNode() {
+  return (
+    <div style={nodeStyle}>
+      <Handle type="target" position={Position.Left} id="in" />
+      Condition
+      <Handle type="source" position={Position.Right} id="out-1" style={{ top: '35%' }} />
+      <Handle type="source" position={Position.Right} id="out-2" style={{ top: '65%' }} />
+    </div>
+  );
+}
+
+function FinalNode() {
+  return (
+    <div style={nodeStyle}>
+      <Handle type="target" position={Position.Left} id="in" />
+      Final
+    </div>
+  );
+}
+
+const nodeTypes = {
+  entry: EntryNode,
+  condition: ConditionNode,
+  final: FinalNode,
+};
 
 export default function App() {
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
+  const [nodes, setNodes] = useState<WorkflowNode[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
 
   const onNodesChange = useCallback(
     (changes: any) => setNodes((nodesSnapshot: any) => changes.applyTo(nodesSnapshot)),
@@ -27,19 +77,26 @@ export default function App() {
     [],
   );
 
-  function addNode() {
-    const newNode = {
+  // Each handle may be used by at most one edge.
+  const isValidConnection = useCallback(
+    (connection: Connection | Edge) =>
+      !edges.some(
+        (edge) =>
+          (edge.source === connection.source && edge.sourceHandle === connection.sourceHandle) ||
+          (edge.target === connection.target && edge.targetHandle === connection.targetHandle),
+      ),
+    [edges],
+  );
+
+  function addNode(type: NodeType) {
+    const newNode: WorkflowNode = {
       id: crypto.randomUUID(),
       position: { x: 0, y: 0 },
-      data: { label: 'New node' },
-      targetPosition: Position.Left, sourcePosition: Position.Right,
-      deletable: true
+      type,
+      data: { label: type },
     };
 
-    // const test = [...nodes, newNode]
-    setNodes([...nodes, newNode]);
     setNodes((nodes) => [...nodes, newNode]);
-
   }
 
   return (
@@ -47,15 +104,20 @@ export default function App() {
       <ReactFlow
         nodes={nodes}
         edges={edges}
+        nodeTypes={nodeTypes}
+        defaultEdgeOptions={{ markerEnd: { type: MarkerType.ArrowClosed } }}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        isValidConnection={isValidConnection}
         fitView
       >
         <Background />
         <Controls />
       </ReactFlow>
-      <button onClick={addNode}>Add node</button>
+      <button onClick={() => addNode('entry')}>Add entry</button>
+      <button onClick={() => addNode('condition')}>Add condition</button>
+      <button onClick={() => addNode('final')}>Add final</button>
     </div>
   );
 }
