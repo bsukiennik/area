@@ -7,7 +7,7 @@ The backend is responsible for managing users, authentication, workflows, trigge
 The technologies evaluated are:
 
 - **Go**
-- **Node.js with TypeScript**
+- **NestJS**
 - **Python**
 
 ## Comparison Criteria
@@ -26,7 +26,7 @@ The technologies are evaluated using the following criteria:
 
 ## Comparative Table
 
-| Criteria | Go | Node.js / TypeScript | Python |
+| Criteria | Go | NestJS | Python |
 |---|---|---|---|
 | Performance | Excellent | Very good | Moderate |
 | Concurrency | Excellent | Very good | Good with appropriate architecture |
@@ -48,7 +48,7 @@ The backend must be able to execute multiple workflows simultaneously. Each work
 
 Go is particularly suitable for this requirement because goroutines are lightweight and can handle a large number of concurrent tasks.
 
-Node.js also handles asynchronous network operations efficiently, but CPU-intensive operations need to be managed carefully.
+NestJS also handles asynchronous network operations efficiently, but CPU-intensive operations need to be managed carefully.
 
 Python can handle asynchronous tasks using asyncio, although CPU-intensive operations may require multiprocessing or other approaches.
 
@@ -60,9 +60,9 @@ The application must communicate with external services through their APIs. Thes
 
 All three technologies provide libraries capable of handling these requirements.
 
-Node.js and Python have particularly extensive ecosystems for interacting with external APIs. Go also provides sufficient libraries and a standard HTTP client that covers most of the project's needs.
+NestJS and Python have particularly extensive ecosystems for interacting with external APIs. Go also provides sufficient libraries and a standard HTTP client that covers most of the project's needs.
 
-**Preferred technology: Go or Node.js.**
+**Preferred technology: Go or NestJS.**
 
 ### API development
 
@@ -70,11 +70,11 @@ The backend must expose an API used by the web frontend and mobile application.
 
 Go provides a built-in HTTP server and frameworks such as Chi and Gin.
 
-Node.js offers several mature frameworks, while Python provides FastAPI, which includes automatic OpenAPI documentation.
+NestJS is a mature framework with dedicated OpenAPI tooling, while Python provides FastAPI, which includes automatic OpenAPI documentation.
 
 All three technologies are suitable for this requirement.
 
-**Preferred technology: Go or Node.js.**
+**Preferred technology: Go or NestJS.**
 
 ### Deployment and maintenance
 
@@ -82,7 +82,7 @@ The backend must be easy to deploy and maintain throughout the project.
 
 Go compiles into a standalone binary, which makes it possible to create relatively small Docker images without requiring a complete runtime environment.
 
-Node.js and Python require their respective runtimes and dependencies to be included in the deployment environment.
+NestJS and Python require their respective runtimes and dependencies to be included in the deployment environment.
 
 **Preferred technology: Go.**
 
@@ -100,4 +100,4 @@ The main reasons for this decision are:
 6. **Project suitability:** Go provides the necessary features without introducing the complexity of a larger framework.
 7. **Security:** Go provides built-in cryptographic and TLS support, alongside libraries for authentication, authorization and input validation. These tools make it possible to implement the security requirements of the project while keeping the backend relatively simple.
 
-Although Node.js and Python offer larger ecosystems for certain integrations and rapid prototyping, Go provides a better balance between performance, concurrency, deployment simplicity and maintainability for this project.
+Although NestJS and Python offer larger ecosystems for certain integrations and rapid prototyping, Go provides a better balance between performance, concurrency, deployment simplicity and maintainability for this project.
