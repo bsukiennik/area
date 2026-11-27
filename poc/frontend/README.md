@@ -1,60 +1,45 @@
-# Frontend POC — node workflow builder
+# AREA frontend POC
 
-## What is this?
+This folder is dedicated to the POC of the AREA project frontend.
 
-A **POC** (proof of concept) is a tiny app built to answer one question:
+It tests multiple frontends, including:
+- React
+- Vue.js
+- Svelte
 
-> Can this frontend technology build a simple node-based workflow editor?
+## How to test
 
-We build the **same tiny editor** with React, Vue, Angular and Svelte, then compare them in [`docs/frontend/comparative.md`](../../docs/frontend/comparative.md).
+Go in the folder of the frontend you want to test, then run:
 
-## What to build
-
-One screen. No backend, no login, no real services, no fake data files.
-
-```text
-[Trigger] → <Condition> → [Reaction]
+```bash
+pnpm run dev
 ```
 
-Only **two features**:
+Connect to the port displayed on the screen.
 
-1. **Add** — three buttons (Trigger, Condition, Reaction) that place a node on the canvas.
-2. **Connect** — drag from a node's dot to another node to draw a line. Nodes can be moved around.
+To terminate the frontend run you can use Ctrl+C
 
-That's it. No save/load, no config panel, no validation, no execution preview, no zoom, no undo.
+## Criterias
 
-## What we compare
+- How easy it is to learn and write the language with the documentation
+- How can the technology manage letting the user create his own workflow
+- How the technology integrates other library
 
-Write a few lines in `NOTES.md` for each technology:
+## The decision
 
-| Question | Answer to record |
-|---|---|
-| Was adding and connecting nodes easy? | Yes/no + what was painful |
-| Did the node library work out of the box? | Any workarounds? |
-| Did it build? | Build log |
-| How long did it take? | Rough hours |
+### React:
+React is one of the of the easiest framework to learn and to use, with one of the most complete documentation.
 
-## Where to put things
+React has an extern library called react flow that is very powerful to build workflows. The library does most of the job that a workflow builder may need. After intergrating it, letting the user create his own workflow is a really easy task.
 
-```text
-poc/frontend/
-├── README.md    # this file
-├── react/       # React + a node library (e.g. React Flow)
-├── vue/         # Vue + Vue Flow
-├── angular/     # Angular
-└── svelte/      # Svelte + Svelte Flow
-```
+Intergrating the react flow library was really simple and easy and it worked out the box.
 
-Each folder gets a `README.md` with run/build commands, the code, and a `NOTES.md` with what you found. A screenshot is welcome but not required.
+### Vue.js
 
-## Done when
 
-- [ ] All four folders build and run.
-- [ ] You can add nodes and connect them.
-- [ ] `NOTES.md` exists in each folder.
+### Svelte
 
-A POC that fails is still a useful result — write down what failed.
 
-## Final decision
+---
 
-Pick the one that was **fastest to build and easiest to use**. Write one short paragraph explaining why the others were rejected **for this project** in `docs/frontend/comparative.md`.
+**Based on these criterias, we decided to use the React framework for the AREA frontend.**
