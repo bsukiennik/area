@@ -39,13 +39,14 @@ Use Ctrl+C to shutdown the backend, and for the database:
 docker compose down -v
 ```
 
-## The decision
+## Criterias
 
-What was evaluated:
 - How easy it is to learn and write the language and the documentation
 - How the language handles the load
 - The architecture used for the language
 - How easy it is to interact with the database
+
+## The descision
 
 ### NestJS:
 Learning NestJS can be easy if you limit it to simple functionalities, but can start to be heavy and messy once you start implementing more and more content, such as the documentation, even when commands such as "nest generate x" exist.
@@ -77,4 +78,4 @@ Interacting with the database in Go is here done with gorm, and the syntax is cl
 
 ---
 
-Based on these criterias, we decided to use the Go language for the AREA backend.
+**Based on these criterias, we decided to use the Go language for the AREA backend.**

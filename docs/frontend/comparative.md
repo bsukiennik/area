@@ -8,7 +8,6 @@ The technologies evaluated are:
 
 - **React**
 - **Vue.js**
-- **Angular**
 - **Svelte**
 
 ## Comparison Criteria
@@ -30,16 +29,16 @@ The technologies are evaluated using the following criteria:
 
 The following table provides a qualitative evaluation of the four technologies.
 
-| Criteria | React | Vue.js | Angular | Svelte |
-|---|---|---|---|---|
-| Performance | Very good | Very good | Very good | Excellent |
-| Component architecture | Excellent | Excellent | Excellent | Very good |
-| Ecosystem | Excellent | Very good | Excellent | Good |
-| Maintainability | Very good | Very good | Very good | Very good |
-| Learning curve | Moderate | Easy | Difficult | Easy |
-| Flexibility | Excellent | Very good | Good | Very good |
-| Documentation and community | Excellent | Very good | Excellent | Good |
-| Deployment | Excellent | Excellent | Very good | Excellent |
+| Criteria | React | Vue.js | Svelte |
+|---|---|---|---|
+| Performance | Very good | Very good | Excellent |
+| Component architecture | Excellent | Excellent | Very good |
+| Ecosystem | Excellent | Very good | Good |
+| Maintainability | Very good | Very good | Very good |
+| Learning curve | Moderate | Easy | Easy |
+| Flexibility | Excellent | Very good | Very good |
+| Documentation and community | Excellent | Very good | Good |
+| Deployment | Excellent | Excellent | Excellent |
 
 These evaluations are qualitative. Actual performance and maintainability depend on the application's architecture, implementation and selected libraries.
 
@@ -55,7 +54,7 @@ Users must be able to create workflows by connecting triggers, conditions and re
 
 React provides access to React Flow, a library specifically designed to create node-based editors and interactive diagrams.
 
-Vue and Svelte also have dedicated flow libraries, while Angular can use graph libraries or a custom implementation.
+Vue and Svelte also have dedicated flow libraries.
 
 **Preferred technology: React.**
 
@@ -103,7 +102,7 @@ React applications built with Vite generate static files that can be served thro
 
 These files can be packaged into a Docker image and deployed alongside the backend and database using Docker Compose.
 
-Vue and Svelte provide similar deployment possibilities. Angular also supports static production builds.
+Vue and Svelte provide similar deployment possibilities.
 
 **Preferred technology: React.**
 
@@ -120,4 +119,4 @@ The main reasons for this decision are:
 5. **TypeScript support:** Combining React with TypeScript improves code organisation and helps detect errors during development.
 6. **Deployment:** Vite produces static production files that can easily be served through Nginx and packaged with Docker.
 
-Although Vue and Svelte offer simpler development experiences, and Angular provides a more complete framework, React offers a particularly suitable balance between flexibility, ecosystem support and the requirements of the AREA project.
+Although Vue and Svelte offer simpler development experiences, React offers a particularly suitable balance between flexibility, ecosystem support and the requirements of the AREA project.
